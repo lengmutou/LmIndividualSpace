@@ -1,0 +1,31 @@
+server:
+  port: 8088
+spring:
+  devtools:
+    restart:
+      enabled: true
+  redis:
+    host: 8.130.66.249
+    port: 6379
+    password:
+    database: 0
+    lettuce:
+      pool:
+        max-idle: 16
+        max-active: 32
+        min-idle: 8
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: lengmu
+    password: Jiang5088.
+    url: 'jdbc:mysql://8.130.66.249:3306/node?serverTimezone=Asia/Shanghai'
+    type: com.zaxxer.hikari.HikariDataSource
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: "del_flag"
+      logic-not-delete-value: 0
+      logic-delete-value: 1
+#  mapper-locations: classpath:mapper/*Dao.xml
