@@ -31,7 +31,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     AuthenticationFailedHandle authenticationFailedHandle;
-
     @Autowired
     TokenStatusCheckFilter tokenStatusCheckFilter;
     @Autowired
@@ -51,6 +50,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/js/**","/css/**","/fonts/**","/images/**","/js/**","/layui/**","/lib/**").anonymous()
                 //让跳转页面的请求通过
                 .antMatchers("/**/jump/**").anonymous()
+                //放行swagger
+                .antMatchers("/swagger-ui/**").anonymous()
+                .antMatchers("/swagger-resources/**").anonymous()
+                .antMatchers("/webjars/**").anonymous()
+                .antMatchers("/v2/**").anonymous()
+
                 // 对于登录接口 允许匿名访问
                 .antMatchers("/user/login").anonymous()
 //                .antMatchers("/article/").anonymous()

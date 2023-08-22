@@ -1,5 +1,6 @@
 server:
   port: 8088
+
 spring:
   devtools:
     restart:
@@ -20,6 +21,9 @@ spring:
     password: Jiang5088.
     url: 'jdbc:mysql://8.130.66.249:3306/node?serverTimezone=Asia/Shanghai'
     type: com.zaxxer.hikari.HikariDataSource
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
@@ -28,4 +32,5 @@ mybatis-plus:
       logic-delete-field: "del_flag"
       logic-not-delete-value: 0
       logic-delete-value: 1
+debug: false
 #  mapper-locations: classpath:mapper/*Dao.xml
