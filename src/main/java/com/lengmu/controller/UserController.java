@@ -8,6 +8,10 @@ import com.lengmu.entity.MyUserDetails;
 import com.lengmu.util.JwtUtil;
 import com.lengmu.util.RedisKeyPrefix;
 import com.lengmu.util.Result;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,6 +33,8 @@ import java.util.concurrent.TimeUnit;
  */
 @RestController
 @RequestMapping("/user")
+//@Api(description = "用户操作",tags = "user-controller")
+@Tag(name="user-controller",description = "用户操作")
 public class UserController {
 
     @Resource
@@ -37,7 +43,8 @@ public class UserController {
     RedisTemplate<String,String> redisTemplate;
 
     @PostMapping("/verification")
-    public void getVerification(HttpSession session, HttpServletResponse response,@RequestBody Map params) {
+    @ApiOperation("获取验证码")
+    public void getVerification(HttpSession session, HttpServletResponse response,@ApiParam(name = "currentSessionID",value = "当前会话ID") @RequestBody Map params) {
         //获取请求对象传递的不会重复的用来代表他的串
         String currentSessionID = params.get("currentSessionID").toString();
 

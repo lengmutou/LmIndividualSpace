@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
  * @author  lengmu
  */
 @Configuration
-//@EnableWebMvc
 public class SwaggerConfig{
     @Bean
     public static BeanPostProcessor springfoxHandlerProviderBeanPostProcessor() {
@@ -46,7 +45,6 @@ public class SwaggerConfig{
                 mappings.addAll(copy);
             }
 
-            @SuppressWarnings("unchecked")
             private List<RequestMappingInfoHandlerMapping> getHandlerMappings(Object bean) {
                 try {
                     Field field = ReflectionUtils.findField(bean.getClass(), "handlerMappings");

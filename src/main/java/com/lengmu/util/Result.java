@@ -1,6 +1,8 @@
 package com.lengmu.util;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,11 +12,17 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
+@ApiModel(description = "响应集")
 public class Result {
+    @ApiModelProperty(value ="响应码")
     private Integer code;
+    @ApiModelProperty(value ="返回的消息提示")
     private String msg;
+    @ApiModelProperty(value ="返回的数据长度")
     private Integer count;
+    @ApiModelProperty(value ="返回的数据")
     private Object data;
+    @ApiModelProperty(value ="登录状态Token")
     private String token;
     public static Result success(String msg,Integer count,Object data){
         return new Result().setCode(0).setMsg(msg).setCount(count).setData(data);
